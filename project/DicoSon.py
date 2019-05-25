@@ -1,25 +1,21 @@
+"""Fichier principal du programme DicoSon, contenant le programme de jeu des sons."""
+
 # ---- IMPORTS DE MODULES ----
+import IPython.display  # Import du module d'affichage de IPython
 import csv              # Lecture fichiers CSV
 import urllib           # Requêtes URL.
 import json             # Lecture JSON.
 from time import sleep  # Fonction de pause du programme.
 
-# ---- DICTIONNAIRE DES VILLES ----
-
-CITIES = {
-    # Ajouter villes (clé int, valeur str)...
-}
-
 # ---- CONFIG PROGRAMME ----
-SLEEP_TIME = 0.05   # Durée de pause du programme à chque boucle (en s).
+SLEEP_TIME = 0.01                   # Durée de pause du programme à chque boucle (en s).
 CSV_FILE_PATH = 'files/dico.csv'    # Emplacement du fichier CSV.
 
 # ---- CONFIG THINGSPEAK ----
-
-TS_CHANNEL_ID = ''          # ID chaîne ThingSpeak.
-TS_API_READ_KEY = ''        # Clé de lecture de la chaîne ThingSpeak.
-TS_JSON_FILE_NAME = ''      # Nom du fichier JSON contenant les données.
-TS_FIELD_NAME = ''          # Nom du champ de données.
+TS_CHANNEL_ID = '788140'          # ID chaîne ThingSpeak.
+TS_API_READ_KEY = 'A11U8UPYY3JC90JS'        # Clé de lecture de la chaîne ThingSpeak.
+TS_JSON_FILE_NAME = '1.json'      # Nom du fichier JSON contenant les données.
+TS_FIELD_NAME = 'field1'          # Nom du champ de données.
 
 # URL ThingSpeak
 TS_READ_URL = 'https://api.thingspeak.com/channels/{0}/fields/{1}?api_key={2}&results=1'.format(
@@ -40,7 +36,7 @@ def play(path):
     Paramètres :
         - path (str) : emplacement du fichier sonore à jouer.
     """
-    print('Son joué :', path)   # Non implémentée !
+    IPython.display.Audio(filename=path, autoplay=True) # Lecture auto du fichier sonore.
 
 # ---- PROGRAMME ----
 
@@ -67,6 +63,8 @@ for i in csvData: # On parcourt les éléments de csvData
 for c in csvData:
     CITIES[float(c[0])] = c[1] # Même procédure, mais on convertit en float c[0].
 
+print(CITIES)
+    
 # Boucle principale
 while True:
     # Récupération des données de distance.
@@ -77,6 +75,7 @@ while True:
     
     # Valeur distance.
     dist = tsPythonData['feeds'][0][TS_FIELD_NAME]
+    print(dist)
 
     # Vérification dans le dictionnaire.
     if dist in CITIES.keys():   # Vérification de l'existence de la clé, prévention KeyError.
