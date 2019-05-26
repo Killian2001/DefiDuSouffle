@@ -43,3 +43,6 @@ tester le programme de [`DicoSon.py`](project/DicoSon.py).
 d'exécuter les programmes Python [`DicoSon.py`](project/DicoSon.py) et [`dataSender.py`](project/dataSender.py).
 * Un répertoire [`files`](project/files), qui contient les fichiers de données nécessaires en fonctionnement du programme.
 * Un répertoire [`sounds`](project/sounds), qui contient les son utilisés par le programme (format WAV de préférence).
+
+## Pour les utilisateurs de jupyterhub.ecmorlaix.bzh
+Si vous voulez télécharger le dépôt sur votre espace Jupyter, [cliquez ici](http://jupyterhub.ecmorlaix.bzh:8092/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FKillian2001%2FDefiDuSouffle&branch=master&subPath=index.ipynb&app=notebook).
