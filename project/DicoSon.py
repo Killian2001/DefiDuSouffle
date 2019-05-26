@@ -36,7 +36,8 @@ def play(path):
     Paramètres :
         - path (str) : emplacement du fichier sonore à jouer.
     """
-    IPython.display.Audio(filename=path, autoplay=True) # Lecture auto du fichier sonore.
+    IPython.display.display( # IPython.display permet d'assurer le jeu du son si la fonction play est appelée dans une boucle
+        IPython.display.Audio(filename=path, autoplay=True)) # Lecture auto du fichier sonore.
 
 # ---- PROGRAMME ----
 
@@ -73,14 +74,13 @@ while True:
     tsTextData = tsRawData.decode('utf-8')  # Décodage données binaires.
     tsPythonData = json.loads(tsTextData)
     
-    # Valeur distance.
-    dist = tsPythonData['feeds'][0][TS_FIELD_NAME]
-    print(dist)
-
-    # Vérification dans le dictionnaire.
-    if dist in CITIES.keys():   # Vérification de l'existence de la clé, prévention KeyError.
-        play(CITIES[dist])  # Jeu du son.
-        del CITIES[dist]    # Suppression du son du dictionnaire, afin d'éviter de le jouer deux fois si la variation de la distance est nulle.
-
+    # Jeu du son en fonction de la distance.
+    if not tsPythonData['feeds'] == []: # On vérifie si le channel n'est pas vide
+        dist = int(tsPythonData['feeds'][0][TS_FIELD_NAME]) # Valeur distance.
+        keys = list(CITIES.keys())  # Copie de la liste des clés, pour éviter que les clés se suppriment au fur et à mesure dans la boucle.
+        for k in keys:  # On parcours les clés.
+            if dist >= k:    # On joue le son si la distance est égale ou supérieure.
+                play(CITIES[k]) # Jeu du son
+                del CITIES[k]   # Suppression de la clé.
     # Pause.
     sleep(SLEEP_TIME)
