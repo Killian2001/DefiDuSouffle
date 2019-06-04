@@ -39,6 +39,7 @@ Le répertoire [`project`](project) contient le code source du projet d'ISN. Il 
 * Un fichier Python [`DicoSon.py`](project/DicoSon.py), code source du programme créé dans le cadre du projet.
 * Un fichier Python [`dataSender.py`](project/dataSender.py), code source d'un programme d'envoi de données ThingSpeak pour
 tester le programme de [`DicoSon.py`](project/DicoSon.py).
+* Un fichier Python [`fonctionnel.py`](project/fonctionnel.py) contenant un code source de programme fonctionnel, utilisé notamment dans la réalisation d'une vidéo de démonstration.
 * Deux bloc-notes Jupyter [`DicoSon.ipynb`](project/DicoSon.ipynb) et [`dataSender.ipynb`](project/dataSender.ipynb), permettant
 d'exécuter les programmes Python [`DicoSon.py`](project/DicoSon.py) et [`dataSender.py`](project/dataSender.py).
 * Un répertoire [`files`](project/files), qui contient les fichiers de données nécessaires en fonctionnement du programme.

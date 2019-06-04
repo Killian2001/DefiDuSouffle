@@ -76,7 +76,7 @@ while True:
     
     # Jeu du son en fonction de la distance.
     if not tsPythonData['feeds'] == []: # On vérifie si le channel n'est pas vide
-        dist = int(tsPythonData['feeds'][0][TS_FIELD_NAME]) # Valeur distance.
+        dist = float(tsPythonData['feeds'][0][TS_FIELD_NAME]) # Valeur distance.
         keys = list(CITIES.keys())  # Copie de la liste des clés, pour éviter que les clés se suppriment au fur et à mesure dans la boucle.
         for k in keys:  # On parcours les clés.
             if dist >= k:    # On joue le son si la distance est égale ou supérieure.
